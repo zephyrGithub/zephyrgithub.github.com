@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 技术 | 海贼的少年]]></title>
+  <link href="http://xiaojian.me/blog/categories/ji-zhu/atom.xml" rel="self"/>
+  <link href="http://xiaojian.me/"/>
+  <updated>2013-11-12T19:00:53+08:00</updated>
+  <id>http://xiaojian.me/</id>
+  <author>
+    <name><![CDATA[海贼的少年]]></name>
+    <email><![CDATA[niubijian2007@126.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[linux下修改ulimit设置的最大进程数]]></title>
+    <link href="http://xiaojian.me/blog/2013/11/12/linuxxia-xiu-gai-ulimitshe-zhi-de-zui-da-jin-cheng-shu/"/>
+    <updated>2013-11-12T18:45:00+08:00</updated>
+    <id>http://xiaojian.me/blog/2013/11/12/linuxxia-xiu-gai-ulimitshe-zhi-de-zui-da-jin-cheng-shu</id>
+    <content type="html"><![CDATA[<p><code>
+shell&gt; ulimit -a
+core file size          (blocks, -c) 0
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 1031976
+max locked memory       (kbytes, -l) 64
+max memory size         (kbytes, -m) unlimited
+open files                      (-n) 102400
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) 10240
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) 1024
+virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited
+</code></p>
+
+<p>max user processes 系统的进程数上限</p>
+
+<p>需要修改下面文件和目录的配置内容：
+<code>
+/etc/security/limits.conf
+/etc/security/limits.d/
+</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[犯了很二逼的java语法错误]]></title>
+    <link href="http://xiaojian.me/blog/2013/11/12/fan-liao-hen-er-bi-de-javayu-fa-cuo-wu/"/>
+    <updated>2013-11-12T18:44:00+08:00</updated>
+    <id>http://xiaojian.me/blog/2013/11/12/fan-liao-hen-er-bi-de-javayu-fa-cuo-wu</id>
+    <content type="html"><![CDATA[<p>错误：
+```
+private static HTablePool pool = new HTablePool(configuration, 1000);</p>
+
+<p>  static {</p>
+
+<pre><code>    configuration = HBaseConfiguration.create();
+
+    configuration.set("hbase.zookeeper.property.clientPort", "2181");
+
+    configuration.set("hbase.zookeeper.quorum", "182.18.24.31,182.18.24.32,182.18.24.37");
+
+    configuration.set("hbase.master", "182.18.24.31:60000");
+
+}
+</code></pre>
+
+<p>在当前类每个成员方法中直接使用pool.get()
+```</p>
+
+<p>修正：
+```
+  static {</p>
+
+<pre><code>    configuration = HBaseConfiguration.create();
+
+    configuration.set("hbase.zookeeper.property.clientPort", "2181");
+
+    configuration.set("hbase.zookeeper.quorum", "182.18.24.31,182.18.24.32,182.18.24.37");
+
+    configuration.set("hbase.master", "182.18.24.31:60000");
+
+}
+</code></pre>
+
+<p>```</p>
+
+<p>在当前类每个成员方法中使用pool，pool不可以作为静态成员变量使用
+<code>
+ HTablePool pool = new HTablePool(configuration, 1000);
+</code></p>
+
+<p>得到的结论：</p>
+
+<p>我们暂且先不看这道题，先回忆一下代码块、构造函数执行顺序的基本知识：</p>
+
+<p>总体规则：静态代码块 &ndash;> 动态代码块 &ndash;>构造函数</p>
+
+<p>静态代码块只在第一次new的时候执行一次，之后不再执行；</p>
+
+<p>动态代码块在每次new的时候都执行一次。</p>
+
+<p>在不涉及继承的情况下：</p>
+
+<p>1.静态代码块和静态成员变量在加载代码时执行，只执行一次，按照它们出现的顺序先后执行；</p>
+
+<p>2.动态代码块在每次实例化对象时执行，在构造函数之前执行，多个动态代码块按照它们出现的顺序先后执行；</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[maven插件assembly打包]]></title>
+    <link href="http://xiaojian.me/blog/2013/11/12/mavencha-jian-assemblyda-bao/"/>
+    <updated>2013-11-12T18:42:00+08:00</updated>
+    <id>http://xiaojian.me/blog/2013/11/12/mavencha-jian-assemblyda-bao</id>
+    <content type="html"><![CDATA[<p>maven assembly 插件
+```
+  <plugin></p>
+
+<pre><code>            &lt;artifactId&gt;maven-assembly-plugin&lt;/artifactId&gt;
+            &lt;version&gt;2.2&lt;/version&gt;
+            &lt;configuration&gt;
+                &lt;descriptors&gt;
+                    &lt;descriptor&gt;distribution.xml&lt;/descriptor&gt;
+                &lt;/descriptors&gt;
+            &lt;/configuration&gt;
+            &lt;executions&gt;
+                &lt;execution&gt;
+                    &lt;id&gt;make-assembly&lt;/id&gt;
+                    &lt;phase&gt;package&lt;/phase&gt;
+                &lt;/execution&gt;
+            &lt;/executions&gt;
+</code></pre>
+
+<p> </plugin>
+```</p>
+
+<p>distribution.xml:
+```
+<assembly></p>
+
+<pre><code>&lt;id&gt;dist&lt;/id&gt;
+&lt;formats&gt;
+    &lt;format&gt;zip&lt;/format&gt;
+&lt;/formats&gt;
+&lt;includeBaseDirectory&gt;false&lt;/includeBaseDirectory&gt;
+&lt;dependencySets&gt;
+    &lt;dependencySet&gt;
+        &lt;outputDirectory&gt;lib&lt;/outputDirectory&gt;
+        &lt;scope&gt;runtime&lt;/scope&gt;
+    &lt;/dependencySet&gt;
+&lt;/dependencySets&gt;
+&lt;fileSets&gt;
+    &lt;fileSet&gt;
+        &lt;directory&gt;${project.basedir}/src/main/resources&lt;/directory&gt;
+        &lt;outputDirectory&gt;config&lt;/outputDirectory&gt;
+        &lt;includes&gt;
+            &lt;include&gt;log4j.properties&lt;/include&gt;
+        &lt;/includes&gt;
+    &lt;/fileSet&gt;
+&lt;/fileSets&gt;
+</code></pre>
+
+<p></assembly>
+```</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[log4j配置的例子]]></title>
+    <link href="http://xiaojian.me/blog/2013/11/12/log4jpei-zhi-de-li-zi/"/>
+    <updated>2013-11-12T18:42:00+08:00</updated>
+    <id>http://xiaojian.me/blog/2013/11/12/log4jpei-zhi-de-li-zi</id>
+    <content type="html"><![CDATA[<p>log4j配置:
+<code>
+Root logger option
+log4j.rootLogger=INFO,stdout,file,error
+Direct log messages to stdout
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.Target=System.out
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n
+log4j.appender.file=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.file.File=${logDir}/log4j.log
+log4j.appender.file.layout=org.apache.log4j.PatternLayout
+log4j.appender.file.Append=true
+log4j.appender.file.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %p %c{3}.%M(%L)&lt;%t&gt;- %m%n
+log4j.appender.file.Threshold=INFO
+log4j.appender.error=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.error.File=${logDir}/log4j.error
+log4j.appender.error.layout=org.apache.log4j.PatternLayout
+log4j.appender.error.Append=true
+log4j.appender.error.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %p %c{3}.%M(%L)&lt;%t&gt;- %m%n
+log4j.appender.error.Threshold=ERROR
+</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[HBase的OOM问题]]></title>
+    <link href="http://xiaojian.me/blog/2013/11/12/hbasede-oomwen-ti/"/>
+    <updated>2013-11-12T18:41:00+08:00</updated>
+    <id>http://xiaojian.me/blog/2013/11/12/hbasede-oomwen-ti</id>
+    <content type="html"><![CDATA[<p>HBase OOM 问题：</p>
+
+<p>出错堆栈：
+<code>
+Exception in thread "main" java.lang.OutOfMemoryError: unable to create new native thread
+at java.lang.Thread.start0(Native Method)
+at java.lang.Thread.start(Thread.java:693)
+at java.util.concurrent.ThreadPoolExecutor.addWorker(ThreadPoolExecutor.java:949)
+at java.util.concurrent.ThreadPoolExecutor.execute(ThreadPoolExecutor.java:1360)
+at java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:132)
+at org.apache.hadoop.hbase.client.HConnectionManager$HConnectionImplementation.processBatchCallback(HConnectionManager.java:1550)
+at org.apache.hadoop.hbase.client.HConnectionManager$HConnectionImplementation.processBatch(HConnectionManager.java:1413)
+at org.apache.hadoop.hbase.client.HTable.flushCommits(HTable.java:949)
+at org.apache.hadoop.hbase.client.HTable.doPut(HTable.java:826)
+at org.apache.hadoop.hbase.client.HTable.put(HTable.java:801)
+at org.apache.hadoop.hbase.client.HTablePool$PooledHTable.put(HTablePool.java:394)
+at co.admaster.dmp.superid.utils.HBaseOp.insertData(HBaseOp.java:78)
+at co.admaster.dmp.superid.service.impl.SuperIdServiceImpl._insertTypeId(SuperIdServiceImpl.java:141)
+at co.admaster.dmp.superid.service.impl.SuperIdServiceImpl.addTwoTypeIds(SuperIdServiceImpl.java:68)
+at co.admaster.dmp.superid.test.SuperIdServiceImplTest.addTwoTypeIdsTest(SuperIdServiceImplTest.java:33)
+at co.admaster.dmp.superid.test.SuperIdServiceImplTest.main(SuperIdServiceImplTest.java:94)
+</code></p>
+
+<p>以下是用hbase shell测试，但最后报错，不知什么原因</p>
+
+<p><code>
+hbase(main):004:0&gt; for i in 1..800 do
+hbase(main):005:1* put 'chenxj_test',"row#{i}",'family:column',"aaaaaaaaaaaaaaaaaaaaaa#{i}"
+hbase(main):006:1&gt; end
+</code>
+<code>
+ERROR: java.lang.OutOfMemoryError: unable to create new native thread
+</code></p>
+
+<h4>修改ulimit设置的最大进程数解决</h4>
+]]></content>
+  </entry>
+  
+</feed>

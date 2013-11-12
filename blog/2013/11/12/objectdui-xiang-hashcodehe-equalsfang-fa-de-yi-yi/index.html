@@ -3,11 +3,11 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Categories - 海贼的少年</title>
+	<title>Object对象hashCode和equals方法的意义 - 海贼的少年</title>
 	<meta name="author" content="海贼的少年">
 
 	
-	<meta name="description" content=" 技术 [ 26 ] 生活 [ 1 ] ">
+	<meta name="description" content="Object对象hashCode和equals方法的意义 用于hashMap确定某Key-Value对的存储位置 key.hashCode()用于确定放置在table数组中的哪一个位置上（这个位置其实是一个链表） key.equals()用于在相同位置（同一链表）上找到正确的key 注意： &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -17,7 +17,7 @@
 
 	<link href="/atom.xml" rel="alternate" title="海贼的少年" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://xiaojian.me/blog/categories/">
+	<link rel="canonical" href="http://xiaojian.me/blog/2013/11/12/objectdui-xiang-hashcodehe-equalsfang-fa-de-yi-yi/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
@@ -73,20 +73,37 @@
 				
 			
 			<div class="mid-col-container">
-				<div id="content" class="inner"><article class="page">
-    
-    <h1 class="title">Categories</h1>
-    
-    <div class="entry-content"><ul>
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">Object对象hashCode和equals方法的意义</h1>
+	<div class="entry-content" itemprop="articleBody"><p>用于hashMap确定某Key-Value对的存储位置</p>
 
-    <li><a href="/blog/categories/技术/">技术</a> [ 26 ]</li>
+<p>key.hashCode()用于确定放置在table数组中的哪一个位置上（这个位置其实是一个链表）</p>
 
-    <li><a href="/blog/categories/生活/">生活</a> [ 1 ]</li>
+<p>key.equals()用于在相同位置（同一链表）上找到正确的key</p>
 
-</ul>
+<p><img src="http://s3.t.itc.cn/mblog/pic/201311_12_18/a1d3216489818615488.jpg"/></p>
 
+<p>注意：对象用作key时最好注意是否需要重写hashCode和equals方法</p>
+
+<p>尽量不要遍历map，人家不是干这个的</p>
 </div>
+
 </article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style addthis_16x16_style">
+	
+	<a class="addthis_button_sinaweibo"></a>
+	
+	
+	
+	
+	
+	<a class="addthis_button_compact"></a>
+	<a class="addthis_counter addthis_bubble_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid="></script>
+</div>
 
 
 </div>

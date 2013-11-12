@@ -3,11 +3,13 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Categories - 海贼的少年</title>
+	<title>cornjob每周一次清理zookeeper日志 - 海贼的少年</title>
 	<meta name="author" content="海贼的少年">
 
 	
-	<meta name="description" content=" 技术 [ 26 ] 生活 [ 1 ] ">
+	<meta name="description" content="Cornjob每周一次清理zookeeper日志 /etc/cron.d/cleanZk 1
+0 17 * * Sun root /opt/zookeeper/bin/cleanZk.sh /opt/zookeeper/bin/cleanZk.sh &#8220;`
+zookeeper_home &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -17,7 +19,7 @@
 
 	<link href="/atom.xml" rel="alternate" title="海贼的少年" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://xiaojian.me/blog/categories/">
+	<link rel="canonical" href="http://xiaojian.me/blog/2013/11/12/cornjobmei-zhou-qing-li-zookeeperri-zhi/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
@@ -73,20 +75,42 @@
 				
 			
 			<div class="mid-col-container">
-				<div id="content" class="inner"><article class="page">
-    
-    <h1 class="title">Categories</h1>
-    
-    <div class="entry-content"><ul>
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">Cornjob每周一次清理zookeeper日志</h1>
+	<div class="entry-content" itemprop="articleBody"><pre><code>/etc/cron.d/cleanZk
+</code></pre>
 
-    <li><a href="/blog/categories/技术/">技术</a> [ 26 ]</li>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>0 17 * * Sun root /opt/zookeeper/bin/cleanZk.sh</span></code></pre></td></tr></table></div></figure>
 
-    <li><a href="/blog/categories/生活/">生活</a> [ 1 ]</li>
 
-</ul>
+<pre><code>/opt/zookeeper/bin/cleanZk.sh
+</code></pre>
 
+<p>&#8220;`
+zookeeper_home=&lsquo;/opt/zookeeper/bin/&rsquo;
+cd $zookeeper_home
+sh ./zkCleanup.sh /opt/zookeeper/data -n 3
+echo &lsquo;clean zookeeper ok!&rsquo;
+exit 0</p>
 </div>
+
 </article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style addthis_16x16_style">
+	
+	<a class="addthis_button_sinaweibo"></a>
+	
+	
+	
+	
+	
+	<a class="addthis_button_compact"></a>
+	<a class="addthis_counter addthis_bubble_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid="></script>
+</div>
 
 
 </div>

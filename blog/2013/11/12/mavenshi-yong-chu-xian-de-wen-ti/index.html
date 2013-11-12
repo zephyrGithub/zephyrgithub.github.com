@@ -3,11 +3,17 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Categories - 海贼的少年</title>
+	<title>maven使用出现的问题 - 海贼的少年</title>
 	<meta name="author" content="海贼的少年">
 
 	
-	<meta name="description" content=" 技术 [ 26 ] 生活 [ 1 ] ">
+	<meta name="description" content="Maven使用出现的问题 Q：maven deploy return code 413 A： 1
+2
+3
+4
+修改jetty提交form表单大小配置：
+-Dorg.mortbay.jetty.Request.maxFormContentSize=5000000
+另一种可能是： &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -17,7 +23,7 @@
 
 	<link href="/atom.xml" rel="alternate" title="海贼的少年" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://xiaojian.me/blog/categories/">
+	<link rel="canonical" href="http://xiaojian.me/blog/2013/11/12/mavenshi-yong-chu-xian-de-wen-ti/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
@@ -73,20 +79,59 @@
 				
 			
 			<div class="mid-col-container">
-				<div id="content" class="inner"><article class="page">
-    
-    <h1 class="title">Categories</h1>
-    
-    <div class="entry-content"><ul>
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">Maven使用出现的问题</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Q：maven deploy return code 413</p>
 
-    <li><a href="/blog/categories/技术/">技术</a> [ 26 ]</li>
+<p>A：</p>
 
-    <li><a href="/blog/categories/生活/">生活</a> [ 1 ]</li>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>修改jetty提交form表单大小配置：
+</span><span class='line'>-Dorg.mortbay.jetty.Request.maxFormContentSize=5000000
+</span><span class='line'>另一种可能是：
+</span><span class='line'>maven私服可能配置了nginx，限制了接收提交文件的大小</span></code></pre></td></tr></table></div></figure>
 
-</ul>
 
+<p>Q：maven install失败</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[ERROR] Failed to execute goal on project open-t-oauth2:
+</span><span class='line'>Could not resolve dependencies for project open-t-oauth2:open-t-oauth2:war:0.0.1:
+</span><span class='line'>Failed to collect dependencies for [com.sohu.twitter:sohutw-service-core:jar:1.0.1-SNAPSHOT (compile),
+</span><span class='line'>com.sohu.twitter:sohutw-ginkgo-core:jar:1.2.5 (compile),
+</span><span class='line'>com.sohu.twitter:sohutw-ginkgo-default-config:jar:1.0.5 (compile),
+</span><span class='line'>com.sohu.twitter:sohutw-ginkgo-monitor:jar:1.0.6 (compile),
+</span><span class='line'>org.apache.amber:amber-oauth2-authzserver:jar:0.31-incubating-SNAPSHOT (compile)...</span></code></pre></td></tr></table></div></figure>
+
+
+<p>A：在打包服务器mvn install失败，最后更了amber的版本解决</p>
 </div>
+
 </article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style addthis_16x16_style">
+	
+	<a class="addthis_button_sinaweibo"></a>
+	
+	
+	
+	
+	
+	<a class="addthis_button_compact"></a>
+	<a class="addthis_counter addthis_bubble_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid="></script>
+</div>
 
 
 </div>

@@ -7,7 +7,26 @@
 	<meta name="author" content="海贼的少年">
 
 	
-	<meta name="description" content="Nov 3rd, 2013 亲爱的女孩 不要哭 周末下午的阳光总是来得惬意而慵懒。 在街道拐角处发现了这家别致安静的小店，如获珍宝的走进，点一杯奶昔，挑几本喜欢的书。择一处角落，就一斜黄灯，总算可以舒展一下疲惫，拂一下繁芜。 那时候我看到窗外的你，气呼呼得坐在咖啡馆前的长椅上，撅着小嘴。 &hellip;">
+	<meta name="description" content="Nov 12th, 2013 技术 Linux下修改ulimit设置的最大进程数 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+shell&gt; ulimit -a
+core file size (blocks, -c) 0
+data seg size ( &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -91,61 +110,63 @@
   
 
 
-<time datetime="2013-11-03T18:15:00+08:00" data-updated="true" itemprop="datePublished">Nov 3<span>rd</span>, 2013</time></div>
+<time datetime="2013-11-12T18:45:00+08:00" data-updated="true" itemprop="datePublished">Nov 12<span>th</span>, 2013</time></div>
 		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ji-zhu/'>技术</a>
+
 
 </div>
 		
 	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/11/03/qin-ai-de-nu-hai/" itemprop="url">亲爱的女孩 不要哭</a></h1>
+	<h1 class="title" itemprop="name"><a href="/blog/2013/11/12/linuxxia-xiu-gai-ulimitshe-zhi-de-zui-da-jin-cheng-shu/" itemprop="url">Linux下修改ulimit设置的最大进程数</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		<p> 周末下午的阳光总是来得惬意而慵懒。</p>
+		<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>shell&gt; ulimit -a
+</span><span class='line'>core file size          (blocks, -c) 0
+</span><span class='line'>data seg size           (kbytes, -d) unlimited
+</span><span class='line'>scheduling priority             (-e) 0
+</span><span class='line'>file size               (blocks, -f) unlimited
+</span><span class='line'>pending signals                 (-i) 1031976
+</span><span class='line'>max locked memory       (kbytes, -l) 64
+</span><span class='line'>max memory size         (kbytes, -m) unlimited
+</span><span class='line'>open files                      (-n) 102400
+</span><span class='line'>pipe size            (512 bytes, -p) 8
+</span><span class='line'>POSIX message queues     (bytes, -q) 819200
+</span><span class='line'>real-time priority              (-r) 0
+</span><span class='line'>stack size              (kbytes, -s) 10240
+</span><span class='line'>cpu time               (seconds, -t) unlimited
+</span><span class='line'>max user processes              (-u) 1024
+</span><span class='line'>virtual memory          (kbytes, -v) unlimited
+</span><span class='line'>file locks                      (-x) unlimited</span></code></pre></td></tr></table></div></figure>
 
-<p>在街道拐角处发现了这家别致安静的小店，如获珍宝的走进，点一杯奶昔，挑几本喜欢的书。择一处角落，就一斜黄灯，总算可以舒展一下疲惫，拂一下繁芜。</p>
 
-<p>那时候我看到窗外的你，气呼呼得坐在咖啡馆前的长椅上，撅着小嘴。旁边站着一个大男孩，满脸憋着通红，却低着头，不知所措的搓着手。扎着高小辫子的你不算美丽的惊艳，但是一身T袖加热裤放肆的宣告着青春，让隔着玻璃的已不再算年轻的我不禁羡慕也对你愈发有兴趣起来。</p>
+<p>max user processes 系统的进程数上限</p>
 
-<p>隔着玻璃，听到你委屈地对着男友喊，说你看我表姐什么都没我好，为什么找的老公有学历，有钱，还对她好？看看你，家境工作长相都不行，为什么我就遇到你了呢，老天真不公平。</p>
+<p>需要修改下面文件和目录的配置内容：</p>
 
-<p>噢，我亲爱的女孩，你不知道，那句脱口而出的气话，会怎样伤害一个真诚的男孩，会让他怎样的难受和忧伤。</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/etc/security/limits.conf
+</span><span class='line'>/etc/security/limits.d/</span></code></pre></td></tr></table></div></figure>
 
-<p>然而，我更心疼的是亲爱的女孩，在你最该拥有梦想，天真和希望的青春岁月，去评价生活和幸福，便如此的现实，却没有学会理性珍惜。</p>
-
-<p>人，无论对工作还是感情，最怕混淆现实与理性。我们可以理性的思考人生，但生活的过于现实，未免如同嚼干本该滋润心田的汁吮。仅剩下食为饱腹，爱为富贵，劳为糊口，息为日作的人生，每一步走的功利，跑得速度，最后奔向所有人都要走向的结局，又如何慢慢的品味花香，感受自然和热爱自己。</p>
-
-<p>噢，亲爱的女孩，你怎么说着说着气话就哭了呢。亲爱的陌生女孩，虽然素昧平生，我还是希望你记住很古老的三句话。</p>
-
-<h3>第一句话，生活是面子与里子。</h3>
-
-<p>无论是你看别人还是别人看你，看到都是面子，真正贴肤的自知的是里子。</p>
-
-<p>选择伴侣，身高，学历，家境，长相，能力等都是一个被子的面子，对你的爱，人品，性格与健康才是与你相拥的里子。一个好的面子能让来参观的客人驻足羡慕，一个不够好的面子可能容易破损，露出里子的脆弱。然而无论如何，选择一个能够保护里子的面子，剩下的漫漫长夜，能够给你带来温暖和舒适的，终归是里子。面子太厚，可能容易压抑。面子太薄，可能无法御寒。各中冷暖，唯你自知，唯你自感。</p>
-
-<p>所以什么选择都可以让步，真正关于终生的选择，一定要自己理智的抉择。没有人会为你的选择负责，也没有怎样对面子的赞叹或是唏嘘可以代替里子给你贴心温暖。</p>
-
-<h3>第二句话，人各有天命。</h3>
-
-<p>人活与世，万千浮沉，不过轻如尘埃。很多事情，皆有天意。万事无需过于较真和清楚，人能真正做的完全自主的决定本来就有限。上帝不是数学家，精密的按照每个人条件来计算命运天平。不是所有的漂亮智慧富有的姑娘都会遇到痴情正直阳光高富帅，不是所有的不漂亮不聪明不富有的姑娘就不会遇到特别完美的那位。甚至有时相反，然而人各有天命。若能认识此点，很多虚妄的嫉妒不甘和委屈，便会更容易消解。顺命而淡定，从心而坦然。无论遇到怎样的路，这是独属你的命运，是礼物，也是恩赐。</p>
-
-<p>很多纠结，不必郁积，无论好坏，皆有天命。</p>
-
-<h3>第三句话，得到必然需付出。</h3>
-
-<p>人人生而不平等，然而命运却精妙的公平。要苗条身材，便需力禁贪食。要遍吃美食同时苗条，便需忍受胃部折磨。要找伴侣表面价值高于自己的，便要准备好足够强大的情商和忠贞不确定性。要找伴侣表面价值低于自己的，也要预备好自己的心理失落和带来的亲子不确定性。没有爱情的婚姻索然无意义，然而没有理智的爱情，何尝不让年轻的你迷糊中扑火受伤。每一种你的选择带来的必然会需要你去相应付出。</p>
-
-<p>很多羡慕，不过是没看到得到背后的付出。很多唏嘘，不过是没看到失去之后的惬意。</p>
-
-<p>亲爱的陌生女孩，我想说的三句话说完了。看到你开始慢慢地停止啜泣，望着对面的鸡排发呆，注意力早就移到香满四街的鸡肉身上。便明白年轻的你其实何须听太多道理，误打误撞何尝不是青春。</p>
-
-<p>也许你会与身边的大男孩继续吵吵闹闹的往前走，也许你会遇到让你意乱情迷的情圣遍体鳞伤，也许你在任性中吵架分手又在某个黄昏偷偷后悔哭泣。</p>
-
-<p>无论如何，亲爱的女孩，不要太依赖命运。无论生活如何对你，淡然平和快乐的心，向上积极宽容的生活是你最大的财富，是最能在每一个孤独夜晚陪伴你走过恐惧和不安全感的羽绒被。</p>
-
-<p>无论如何，亲爱的女孩，不要过于现实，失去激情，梦想，幼稚天真和希望，过于现实的人生，便无了本有的色彩，蹉跎了岁月，也浪费了一池美好青春。</p>
-
-<p>亲爱的陌生女孩，不要哭。</p>
-
-<p>吃一口鸡排，明天永远比昨天更美。</p>
 
 		
 		
@@ -168,111 +189,99 @@
   
 
 
-<time datetime="2013-11-03T18:15:00+08:00" data-updated="true" itemprop="datePublished">Nov 3<span>rd</span>, 2013</time></div>
+<time datetime="2013-11-12T18:44:00+08:00" data-updated="true" itemprop="datePublished">Nov 12<span>th</span>, 2013</time></div>
 		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ji-zhu/'>技术</a>
+
 
 </div>
 		
 	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/11/03/nian-qing-ren-jia-you/" itemprop="url">年轻人加油</a></h1>
+	<h1 class="title" itemprop="name"><a href="/blog/2013/11/12/fan-liao-hen-er-bi-de-javayu-fa-cuo-wu/" itemprop="url">犯了很二逼的java语法错误</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		<p> 久不联系的A哥在QQ上找我聊天。</p>
+		<p>错误：</p>
 
-<p> 我失恋了。他敲过来四个字，我的心弦却紧了一下~</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>private static HTablePool pool = new HTablePool(configuration, 1000);
+</span><span class='line'>
+</span><span class='line'>  static {
+</span><span class='line'>
+</span><span class='line'>        configuration = HBaseConfiguration.create();
+</span><span class='line'>
+</span><span class='line'>        configuration.set("hbase.zookeeper.property.clientPort", "2181");
+</span><span class='line'>
+</span><span class='line'>        configuration.set("hbase.zookeeper.quorum", "182.18.24.31,182.18.24.32,182.18.24.37");
+</span><span class='line'>
+</span><span class='line'>        configuration.set("hbase.master", "182.18.24.31:60000");
+</span><span class='line'>
+</span><span class='line'>    }
+</span><span class='line'>
+</span><span class='line'>在当前类每个成员方法中直接使用pool.get()</span></code></pre></td></tr></table></div></figure>
 
-<p> 他与女友B从高中走来，到谈婚论嫁，该有十年了吧。</p>
 
-<p> 十年感情，他有多爱她。所有旁观者都有目睹。</p>
+<p>修正：</p>
 
-<p> 可是她在最后都要与A订婚的时候，与一个人相亲。</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>  static {
+</span><span class='line'>
+</span><span class='line'>        configuration = HBaseConfiguration.create();
+</span><span class='line'>
+</span><span class='line'>        configuration.set("hbase.zookeeper.property.clientPort", "2181");
+</span><span class='line'>
+</span><span class='line'>        configuration.set("hbase.zookeeper.quorum", "182.18.24.31,182.18.24.32,182.18.24.37");
+</span><span class='line'>
+</span><span class='line'>        configuration.set("hbase.master", "182.18.24.31:60000");
+</span><span class='line'>
+</span><span class='line'>    }</span></code></pre></td></tr></table></div></figure>
 
-<p> 然后快速与那个人结了婚。</p>
 
-<p> 原因很简单，那个人可以一结婚就全款买一个房子。</p>
+<p>在当前类每个成员方法中使用pool，pool不可以作为静态成员变量使用</p>
 
-<p> 如果B是坏女孩，也许故事不会那么无奈。</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> HTablePool pool = new HTablePool(configuration, 1000);</span></code></pre></td></tr></table></div></figure>
 
-<p> 可是我们都知道B是一个很温柔乖巧善良的女孩儿。</p>
 
-<p> 只是因为她母亲一直不同意A所以一直让她相亲。</p>
+<p>得到的结论：</p>
 
-<p> 如果B从此过得不开心，也许故事不会那么讽刺。</p>
+<p>我们暂且先不看这道题，先回忆一下代码块、构造函数执行顺序的基本知识：</p>
 
-<p> 可是A说B在婚礼上笑得是真的开心，她对未来充满了希望和安全感。</p>
+<p>总体规则：静态代码块 &ndash;> 动态代码块 &ndash;>构造函数</p>
 
-<p> 一栋房子，是A哥以目前的家境和工资不知何时能达到的目标。</p>
+<p>静态代码块只在第一次new的时候执行一次，之后不再执行；</p>
 
-<p> 一栋房子，是B姐姐幸福感和安全感的很大来源，可以改变一个终生伴侣。</p>
+<p>动态代码块在每次new的时候都执行一次。</p>
 
-<p> 是我太矫情了吧，可是我感伤中国式的爱情，背负了太多的责任。</p>
+<p>在不涉及继承的情况下：</p>
 
-<p> 房子，是绕不过的坎，是孩子落户的来源，是下一代在新城市上学的重要条件。</p>
+<p>1.静态代码块和静态成员变量在加载代码时执行，只执行一次，按照它们出现的顺序先后执行；</p>
 
-<p> 道理我都懂，我都明白B的责任心和远虑，我都明白双方都没有过错。</p>
-
-<p> 我明白A并不恨B，他去参加B的婚礼，花了三个月工资，包了一万块红包。</p>
-
-<p> 他看见她脸上的笑容，心中绞痛却欣慰。</p>
-
-<p> A终于失去了最心爱的女孩。他又将遇到怎样的人，又将开始怎样的爱情。</p>
-
-<p> 十年，是有多肯定对方会一起走进婚姻殿堂，一起过幸福的一辈子。</p>
-
-<p> 十年的感情，说放下，是不是如割肉般地疼痛。</p>
-
-<p> 房价似藤条，缠绕着青春的翅膀，梦想被憋得满脸青绿。</p>
-
-<p> 可是年轻人，加油。</p>
-
-<p> 不要轻易的放弃梦想和飞翔。</p>
-
-<p> 我明白这个时代对于一无所有的我们已经愈来愈艰难。</p>
-
-<p> 尤记得实习时遇到的富二代同事和我数他家在哪里哪里有几套房子。</p>
-
-<p> 和我说 你们外地人干嘛要待在上海呢，又买不起房子。</p>
-
-<p> 和我说 他的工资根本抵不上他一个星期的消费。</p>
-
-<p> 和我说 你看你考上交大 我考的外贸 照样比你活的滋润百倍。</p>
-
-<p> 和我说 你看你一点生活品味都没有 我耳机都是一万块的。</p>
-
-<p> 是的 我不同 我的工资有我太多的小梦想。</p>
-
-<p> 我要多小心翼翼地去等待每个月底的到账。</p>
-
-<p> 那份工资，可以让我买的心仪已久的漂亮裙子。</p>
-
-<p> 那份工资，可以让我请辛勤工作的父母一次旅游。</p>
-
-<p> 那份工资，可以让我慢慢向梦想靠近一小步。</p>
-
-<p> 那份工资，可以让我为未来的他多分担一份压力。</p>
-
-<p> 可是  我感到幸福。</p>
-
-<p> 因为每一分期待与满足都来自我自己的努力。</p>
-
-<p> 我依旧有我的梦想。</p>
-
-<p> 与豪宅名车无关的梦想，与物欲无关的理想。</p>
-
-<p> 年轻人 加油。</p>
-
-<p> 亲爱的A哥，也许你现在因为现实失去心爱的女孩。</p>
-
-<p> 可是一定要勇敢地努力和相信幸福。</p>
-
-<p> 因为 即使物欲再横流。</p>
-
-<p> 真正的幸福感来源于内心的喜悦和知足。</p>
-
-<p> 因为 即使房价让我们再沉重</p>
-
-<p> 梦想与希望依然会给予心灵幸福和勇气。</p>
-
-<p> 加油 年轻人。</p>
+<p>2.动态代码块在每次实例化对象时执行，在构造函数之前执行，多个动态代码块按照它们出现的顺序先后执行；</p>
 
 		
 		
@@ -295,34 +304,99 @@
   
 
 
-<time datetime="2013-11-03T18:15:00+08:00" data-updated="true" itemprop="datePublished">Nov 3<span>rd</span>, 2013</time></div>
+<time datetime="2013-11-12T18:42:00+08:00" data-updated="true" itemprop="datePublished">Nov 12<span>th</span>, 2013</time></div>
 		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ji-zhu/'>技术</a>
+
 
 </div>
 		
 	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/11/03/bi-ye-gan-shang/" itemprop="url">毕业感伤</a></h1>
+	<h1 class="title" itemprop="name"><a href="/blog/2013/11/12/mavencha-jian-assemblyda-bao/" itemprop="url">Maven插件assembly打包</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		<p>最近多是感伤。
-第一次喝到醉，第一次狂飙歌，第一次上台有人对我唱歌，第一次被喊楼，第一次凌晨回宿舍。。。
-毕业季留给我太多太多的第一次，却也很可能是最后一次。
-我不知道该说什么好，小玉总是笑我渲染感情，可是太多的不舍不能言说。
-我是太过于感性的人吧，可是对于交大，对于IE研究生班，对于姐们们，对于亲爱的闺蜜们。。
-我真的不知该如何表达我心中的情感。</p>
+		<p>maven assembly 插件</p>
 
-<p>2006年，进入交大，2013年，离开交大。
-我生命中最青春最绚烂的七年留给了交大，交大容忍了我的幼稚天真张狂和理想。
-从此之后便踏入社会，逐渐放弃理想，放弃张狂，磨去棱角，变成一个不可爱的人。</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>  &lt;plugin&gt;
+</span><span class='line'>                &lt;artifactId&gt;maven-assembly-plugin&lt;/artifactId&gt;
+</span><span class='line'>                &lt;version&gt;2.2&lt;/version&gt;
+</span><span class='line'>                &lt;configuration&gt;
+</span><span class='line'>                    &lt;descriptors&gt;
+</span><span class='line'>                        &lt;descriptor&gt;distribution.xml&lt;/descriptor&gt;
+</span><span class='line'>                    &lt;/descriptors&gt;
+</span><span class='line'>                &lt;/configuration&gt;
+</span><span class='line'>                &lt;executions&gt;
+</span><span class='line'>                    &lt;execution&gt;
+</span><span class='line'>                        &lt;id&gt;make-assembly&lt;/id&gt;
+</span><span class='line'>                        &lt;phase&gt;package&lt;/phase&gt;
+</span><span class='line'>                    &lt;/execution&gt;
+</span><span class='line'>                &lt;/executions&gt;
+</span><span class='line'> &lt;/plugin&gt;</span></code></pre></td></tr></table></div></figure>
 
-<p>感谢喜欢过我的人，虽然我这么多不好，但是还能有人欣赏，真的很是感激。 感谢我喜欢过的人，虽然我没有勇气，但是能在老去之前有过心动的感觉，何尝不是青春的馈赠。感谢遇到的朋友知己和姐姐妹妹们，虽然我随性爱自由爱发疯，能有一群人宽容自己陪着自己一起疯，是大幸。</p>
 
-<p>对于即将来到的生活，我没有什么大的野心，只希望安静简单的过好每一天，踏实快乐的做好每一件事。
-希望可以与自己欣赏的姐妹们更多的交流和哈皮，能够遇见如此多善良有才和正直美丽的你们，是一笔财富。
-希望可以早点遇到那个对的人，他不高不富不帅，正如我不白不富不美。但是我们正直上进，专一稳定，善良勇敢，手牵手一起走余下的路，不要让每天彼此的日子那么孤单无助。</p>
+<p>distribution.xml:</p>
 
-<p>大大的交大，可否容下我小小的忧伤。外面的世界，可否让我小小的梦想。
-我爱你，交大。
-我来了，未来。</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;assembly&gt;
+</span><span class='line'>    &lt;id&gt;dist&lt;/id&gt;
+</span><span class='line'>    &lt;formats&gt;
+</span><span class='line'>        &lt;format&gt;zip&lt;/format&gt;
+</span><span class='line'>    &lt;/formats&gt;
+</span><span class='line'>    &lt;includeBaseDirectory&gt;false&lt;/includeBaseDirectory&gt;
+</span><span class='line'>    &lt;dependencySets&gt;
+</span><span class='line'>        &lt;dependencySet&gt;
+</span><span class='line'>            &lt;outputDirectory&gt;lib&lt;/outputDirectory&gt;
+</span><span class='line'>            &lt;scope&gt;runtime&lt;/scope&gt;
+</span><span class='line'>        &lt;/dependencySet&gt;
+</span><span class='line'>    &lt;/dependencySets&gt;
+</span><span class='line'>    &lt;fileSets&gt;
+</span><span class='line'>        &lt;fileSet&gt;
+</span><span class='line'>            &lt;directory&gt;${project.basedir}/src/main/resources&lt;/directory&gt;
+</span><span class='line'>            &lt;outputDirectory&gt;config&lt;/outputDirectory&gt;
+</span><span class='line'>            &lt;includes&gt;
+</span><span class='line'>                &lt;include&gt;log4j.properties&lt;/include&gt;
+</span><span class='line'>            &lt;/includes&gt;
+</span><span class='line'>        &lt;/fileSet&gt;
+</span><span class='line'>    &lt;/fileSets&gt;
+</span><span class='line'>&lt;/assembly&gt;</span></code></pre></td></tr></table></div></figure>
+
 
 		
 		
@@ -345,49 +419,59 @@
   
 
 
-<time datetime="2013-11-03T18:14:00+08:00" data-updated="true" itemprop="datePublished">Nov 3<span>rd</span>, 2013</time></div>
+<time datetime="2013-11-12T18:42:00+08:00" data-updated="true" itemprop="datePublished">Nov 12<span>th</span>, 2013</time></div>
 		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ji-zhu/'>技术</a>
+
 
 </div>
 		
 	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/11/03/you-dang-de-lu-wei/" itemprop="url">游荡的芦苇</a></h1>
+	<h1 class="title" itemprop="name"><a href="/blog/2013/11/12/log4jpei-zhi-de-li-zi/" itemprop="url">Log4j配置的例子</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		<p>我是一株游荡的芦苇</p>
+		<p>log4j配置:</p>
 
-<p>漪着梦想肆意地流浪</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Root logger option
+</span><span class='line'>log4j.rootLogger=INFO,stdout,file,error
+</span><span class='line'>Direct log messages to stdout
+</span><span class='line'>log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+</span><span class='line'>log4j.appender.stdout.Target=System.out
+</span><span class='line'>log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+</span><span class='line'>log4j.appender.stdout.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n
+</span><span class='line'>log4j.appender.file=org.apache.log4j.DailyRollingFileAppender
+</span><span class='line'>log4j.appender.file.File=${logDir}/log4j.log
+</span><span class='line'>log4j.appender.file.layout=org.apache.log4j.PatternLayout
+</span><span class='line'>log4j.appender.file.Append=true
+</span><span class='line'>log4j.appender.file.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %p %c{3}.%M(%L)&lt;%t&gt;- %m%n
+</span><span class='line'>log4j.appender.file.Threshold=INFO
+</span><span class='line'>log4j.appender.error=org.apache.log4j.DailyRollingFileAppender
+</span><span class='line'>log4j.appender.error.File=${logDir}/log4j.error
+</span><span class='line'>log4j.appender.error.layout=org.apache.log4j.PatternLayout
+</span><span class='line'>log4j.appender.error.Append=true
+</span><span class='line'>log4j.appender.error.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %p %c{3}.%M(%L)&lt;%t&gt;- %m%n
+</span><span class='line'>log4j.appender.error.Threshold=ERROR</span></code></pre></td></tr></table></div></figure>
 
-<p>从遥远的昨天</p>
-
-<p>到这里</p>
-
-<p>到温暖的明天</p>
-
-<p>我看过最明亮的风景</p>
-
-<p>追着阳光彷佛不愿苏醒</p>
-
-<p>我路过最痴情的村庄</p>
-
-<p>爱上黑夜于是从此安静</p>
-
-<p>我游过最浪漫的河流</p>
-
-<p>曼波漪漪卷起美妙歌声</p>
-
-<p>我是一株游荡的芦苇</p>
-
-<p>我歌唱 因为头顶着浪花</p>
-
-<p>我悲伤 因为柔软的灵魂</p>
-
-<p>我眷恋夕阳 却爬不了葱绿的树梢</p>
-
-<p>我向往大雁 却赶不上威武的队伍</p>
-
-<p>于是我勇敢地继续游荡</p>
-
-<p>好像孤独不曾侵蚀过我的忧伤。</p>
 
 		
 		
@@ -410,53 +494,73 @@
   
 
 
-<time datetime="2013-11-03T18:14:00+08:00" data-updated="true" itemprop="datePublished">Nov 3<span>rd</span>, 2013</time></div>
+<time datetime="2013-11-12T18:41:00+08:00" data-updated="true" itemprop="datePublished">Nov 12<span>th</span>, 2013</time></div>
 		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ji-zhu/'>技术</a>
+
 
 </div>
 		
 	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/11/03/xian-si-xiao-qi/" itemprop="url">闲思小憩</a></h1>
+	<h1 class="title" itemprop="name"><a href="/blog/2013/11/12/hbasede-oomwen-ti/" itemprop="url">HBase的OOM问题</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		<p> 午休醒来已经快七点钟，天色昏暗，爬起至吉姆利德，一人占四人座，怡然自得，好不欢喜。点了几盘爱吃的菜，就着喜欢的甜点，便开始思考人生起来。也奈何不得自己的怪性格，什么事偏喜欢思考个清楚，什么道德伦理还是对错常识，总是要经过自己的判断。若是想自我辩护，许是应了德尔斐神谕吧，借苏格拉底老师的说法‘认识你自己’是哲思的根本。</p>
+		<p>HBase OOM 问题：</p>
 
-<p>  然而我必然羡慕是没心没肺快乐的人的，什么都不去想，走一步算一步。奈何我是个理科生性格，总是想给人生很多来个定义，给生活用理性和逻辑搭个房间，然后才敢让感性肆意的在房间里裸奔。</p>
+<p>出错堆栈：</p>
 
-<p>   对于人生，我想既然活着，快乐必然是最主要的。人，首先得为自己而活，然后才能谈到其他。</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Exception in thread "main" java.lang.OutOfMemoryError: unable to create new native thread
+</span><span class='line'>at java.lang.Thread.start0(Native Method)
+</span><span class='line'>at java.lang.Thread.start(Thread.java:693)
+</span><span class='line'>at java.util.concurrent.ThreadPoolExecutor.addWorker(ThreadPoolExecutor.java:949)
+</span><span class='line'>at java.util.concurrent.ThreadPoolExecutor.execute(ThreadPoolExecutor.java:1360)
+</span><span class='line'>at java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:132)
+</span><span class='line'>at org.apache.hadoop.hbase.client.HConnectionManager$HConnectionImplementation.processBatchCallback(HConnectionManager.java:1550)
+</span><span class='line'>at org.apache.hadoop.hbase.client.HConnectionManager$HConnectionImplementation.processBatch(HConnectionManager.java:1413)
+</span><span class='line'>at org.apache.hadoop.hbase.client.HTable.flushCommits(HTable.java:949)
+</span><span class='line'>at org.apache.hadoop.hbase.client.HTable.doPut(HTable.java:826)
+</span><span class='line'>at org.apache.hadoop.hbase.client.HTable.put(HTable.java:801)
+</span><span class='line'>at org.apache.hadoop.hbase.client.HTablePool$PooledHTable.put(HTablePool.java:394)
+</span><span class='line'>at co.admaster.dmp.superid.utils.HBaseOp.insertData(HBaseOp.java:78)
+</span><span class='line'>at co.admaster.dmp.superid.service.impl.SuperIdServiceImpl._insertTypeId(SuperIdServiceImpl.java:141)
+</span><span class='line'>at co.admaster.dmp.superid.service.impl.SuperIdServiceImpl.addTwoTypeIds(SuperIdServiceImpl.java:68)
+</span><span class='line'>at co.admaster.dmp.superid.test.SuperIdServiceImplTest.addTwoTypeIdsTest(SuperIdServiceImplTest.java:33)
+</span><span class='line'>at co.admaster.dmp.superid.test.SuperIdServiceImplTest.main(SuperIdServiceImplTest.java:94)</span></code></pre></td></tr></table></div></figure>
 
-<p>   可是，为自己而活，这一点的第一步就是认识你自己。</p>
 
-<p>   是的，是认识你自己，不是认识那个社会规定的你，不是认识父母眼中的你，不是朋友口中的，是真正的你。所以，首先，先对所有的判断和对错说一声bullshit，肯定和否定只是人类用来规范社会的规则法律而已，与你没有半毛钱关系。抛开一切社会伦理，先脱去厚厚的羽绒服，毛衣，棉毛衫，正视裸露的自己。</p>
+<p>以下是用hbase shell测试，但最后报错，不知什么原因</p>
 
-<p>   你，是谁？</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>hbase(main):004:0&gt; for i in 1..800 do
+</span><span class='line'>hbase(main):005:1* put 'chenxj_test',"row#{i}",'family:column',"aaaaaaaaaaaaaaaaaaaaaa#{i}"
+</span><span class='line'>hbase(main):006:1&gt; end</span></code></pre></td></tr></table></div></figure>
 
-<p>   你首先是一种哺乳动物，第一是活下来，第二是让你的基因活下来，第三是晒太阳。</p>
 
-<p>   活下来，第一需要吃喝拉撒，其次需要群居，再然后需要在群居社会里争夺资源。所以正视你对美食的欲望，对孤独的无可忍受，承认你无法忍耐寂寞，会嫉妒，具有十分的占有欲。</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ERROR: java.lang.OutOfMemoryError: unable to create new native thread</span></code></pre></td></tr></table></div></figure>
 
-<p>   让你的基因活下来，所以你需要在这个群居社会里尽量往上爬，强胜劣汰，无论一夫一妻制如何去规定，人类的繁衍策略即规定了最强的雄性拥有最多的繁衍权利并且可以去选择最优秀的雌性来稳固大权，而弱者将逐渐丧失繁衍的权利，以至于基因被淘汰。无论你身为男子还是女子，让自己的基因流传下去是最基本的渴望，所以渴望金钱与权利是最基本的欲望，因为这是群居社会里的粗步基因淘汰规则。</p>
 
-<p>  你看猩猩狮子老虎吃饱了争斗完了在干什么呢，是啊，要么在互相挑虱子要么就是在晒太阳发呆睡觉。人，需要晒太阳休息发呆，所以你内心最基本的想法是吃饱了斗完了好好晒太阳偷懒度假睡觉的。所以，无论何时，记得享受当下的太阳美食和美景是最根本的需求，而不是进化需求。</p>
-
-<p>  你，是谁？</p>
-
-<p>  除去哺乳动物的属性，你是一个基因和另一个基因的合成物。</p>
-
-<p>  所以，首先，正视你的遗传属性，这与生俱来，无可改变，无论你遗传了任何缺点还是优点，都已经无法改变。其次，正视你的人生经历与家庭教育，这是你在年幼弱小时无力改变的，无论你来自于暴政家庭，强势父母还是民主父母，你父母的观点和你的童年经历将至少占到你价值观人生观的百分之三十，正视你的家族和童年是认识自己的第二步。然后正视你的后天成长经历，并给出你所想给出的改变方向，而尽力往那个方向去靠拢。然而无奈的是，很多时候，你所想要达到的方向和你的理想梦想伦理道德观，也是已经有你的先天决定的。</p>
-
-<p>  你生活在哪里？</p>
-
-<p>  当我们认识到自己对食欲金钱名利和压制他人的渴望之后，需要认清自己所属的环境，换句话说，你生活在一个充满规则的社会里，你越是底层，所有的规则越多，越往上爬，约束越少。聪明的人，认清自己的欲望，知道自己所属的层，并且明白如何绕过规则满足自己。</p>
-
-<p>  在这个时代和社会，恪守道德和伦理就像遵守规则的绵羊们，即使被屠宰也不会首先被屠宰，所以是最有安全感的夹层。可是如果你发现自己拥有更多的超越这些规则的能力，那就去好好把握吧，人活着，只要尽量做到少伤害其他社会体，遵从自己的内心是首要的。</p>
-
-<p>  所以，如果发现让你感到快乐的事情，就去做吧。如果做了会让你感到内疚，那么就分析这种内疚是来自于你先天的道德伦理观让你无法改变的，就压制着吧，如果这种内疚可以通过后天对自己本身的认知而去除，那么就去好好快乐吧。总之，人生就像一个数学模型，拥有无数的约束条件，决策变量是你的心情和行动，目标函数是你的快乐值。</p>
-
-<p> 所以在思考完以上之后，我在论文完全看不到希望来自导师的压力山大的情况下，在我已经吃了睡睡了吃一天的情况下，心安理得的又好好满足了一下自己食欲和晒月亮的欲望。</p>
-
-<p> 所以，无论外界多么否定你，首先肯定自己，接受自己，然后才能让外界肯定和接受你自己。</p>
-
-<p> 然后你就可以强大而温柔的活着，在理性的房间里可以肆意的裸奔了。</p>
+<h4>修改ulimit设置的最大进程数解决</h4>
 
 		
 		
@@ -479,21 +583,26 @@
   
 
 
-<time datetime="2013-11-03T18:14:00+08:00" data-updated="true" itemprop="datePublished">Nov 3<span>rd</span>, 2013</time></div>
+<time datetime="2013-11-12T18:40:00+08:00" data-updated="true" itemprop="datePublished">Nov 12<span>th</span>, 2013</time></div>
 		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ji-zhu/'>技术</a>
+
 
 </div>
 		
 	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/11/03/xi-wang-yu-jue-wang-qian-tan-sheng-ming-de-yi-yi/" itemprop="url">希望与绝望——浅谈生命的意义</a></h1>
+	<h1 class="title" itemprop="name"><a href="/blog/2013/11/12/grailsrang-ren-nan-shou-de-ji-dian/" itemprop="url">Grails让人难受的几点</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		<p>爱丽丝是一家火柴厂的女工，单调乏味、贫穷充斥了她的生活。继父的家暴，超时的工作，她唯一的乐趣来源于酒吧的欢唱，并因此遇到一个男人，匆忙的以身相许之后，第二天男人留下了一些钞票。她并不明其义，天真认为其是爱情。有一天，她发现她怀孕了，千辛万苦找到这个男人，他却不愿意负责任。她还想生下这个孩子，可是一场车祸夺去了她的孩子和希望。于是她开始疯狂的报复所有曾经亏欠过她的人，直到警察出现。</p>
+		<p>grails令人难受的几点：</p>
 
-<p>阿基的电影通篇压抑和忧郁，女主角如同火柴一样燃烧却不免自我毁灭。自以为的爱情和孩子是她生命中唯一的一线希望与光亮，当生活充满绝望，一切伦理道德便也显得滑稽。叔本华说生命是一团欲望,欲望不能满足便痛苦,满足便无聊,人生就在痛苦和无聊之间摇摆。而希望未尝不是慢慢喂满欲望的食物，尽管无法填饱，却可以让每个人都在伦理范畴之内，遵守强者的规范。任何道德和约束，都要确保她的受众有一线希望。永远不要试图去控制一群绝望的人，绝望会释放人性中内深层的恐惧，似山洪吞没任何道德，任何人道和任何伦理。</p>
+<h4>log差，错误堆栈和真实出错的地方相差太远</h4>
 
-<p>拯救一个恶魔最有效的方法是给予其希望。告诉他即使没有家人，没有爱，没有关怀，贫穷毒品纵欲乱性把他的生活蹂躏的乱七八糟，但给予一线希望，无论是工作，感情还是健康。摧毁一个天使最直接的方法是让他绝望。告诉他即使你富足，有爱，健康，幸福，但是你没有明天，一切都将重复今天，没有未来和尽头。人最大的善意莫过于给予偶遇的绝望者一丝希望，而最无望的社会莫过于他最底层的人民，已经陷入了绝望。如果一艘大船往前行驶，只乐于服务那些最顶层的富人，那么最底层的绝望将会掀翻整个海浪。绝望的力量是失控的，一个个体的绝望可以毁灭几百万万个体的希望，暴民始于摧毁绝望的恐惧，良民遵法守法因为被给予一丝希望。</p>
+<h4>deploy慢，每次启动项目时间很长</h4>
 
-<p>人最难做到的是直面内心的恐惧与孤独，欲望可以不断地填充孤独。可若欲望无法排解，希望完全熄灭，恐惧的咆哮将震彻所谓文明和道德。人，无法孤独地存在，并勇敢的去爱。倘若末日有何意义，就是他教会一群勇敢的人敢于直面自己的恐惧，敢于孤独的行进，在绝望中寻求精神的永生，在人性中看到爱与美的希望。</p>
+<p>grails开发效率高，但是因为上面几点问题也会消耗不少时间，
+不过grails社区发展地挺不错的，这些地方以后会有很大地提升</p>
 
 		
 		
@@ -516,25 +625,80 @@
   
 
 
-<time datetime="2013-11-03T18:14:00+08:00" data-updated="true" itemprop="datePublished">Nov 3<span>rd</span>, 2013</time></div>
+<time datetime="2013-11-12T18:39:00+08:00" data-updated="true" itemprop="datePublished">Nov 12<span>th</span>, 2013</time></div>
 		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ji-zhu/'>技术</a>
+
 
 </div>
 		
 	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/11/03/sui-hua-rou-jin-ren-qiao-cui/" itemprop="url">碎花糅尽人憔悴</a></h1>
+	<h1 class="title" itemprop="name"><a href="/blog/2013/11/12/stormqi-dong-bao-chong-tu-cuo-wu/" itemprop="url">一个storm启动包冲突错误</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		<p>答辩结束，想写点什么，寥寥几语，却道不尽心中杂感。许是因为离毕业又近了一步，感性泛滥。回忆起两年半前入学时，也曾是意气风发，转眼之间，时间真的过得好快。曾经的回忆似一丝丝细纹，慢慢涟漪，却蕴开满池惆怅。是不是越是用力去想梳理，反而愈是无力拨开浮云。两年半，遇到这么多可爱善良的人，是上天的眷顾，是我的幸福。两年半，我一个人来，也要一个人离开。两年半，可以改变很多事情，唯独不变的是对未来的憧憬和快乐的能力。未来的路，即使再孤单，告诉自己，也要记得勇敢和幸福。</p>
+		<p>storm启动出错,错误信息:</p>
 
-<p>  不知为何答辩后反而心中愁情万起，许是应了那句，贱人就是矫情。感性的人，总容易乱了忧伤。</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Exception in thread "main" java.lang.VerifyError: class org.codehaus.groovy.runtime.callsite.GroovySunClassLoader$2 overrides final method visit.(IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V
+</span><span class='line'>        at java.lang.ClassLoader.defineClass1(Native Method)
+</span><span class='line'>        at java.lang.ClassLoader.defineClass(ClassLoader.java:791)
+</span><span class='line'>        at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+</span><span class='line'>        at java.net.URLClassLoader.defineClass(URLClassLoader.java:449)
+</span><span class='line'>        at java.net.URLClassLoader.access$100(URLClassLoader.java:71)
+</span><span class='line'>        at java.net.URLClassLoader$1.run(URLClassLoader.java:361)
+</span><span class='line'>        at java.net.URLClassLoader$1.run(URLClassLoader.java:355)
+</span><span class='line'>        at java.security.AccessController.doPrivileged(Native Method)
+</span><span class='line'>        at java.net.URLClassLoader.findClass(URLClassLoader.java:354)
+</span><span class='line'>        at java.lang.ClassLoader.loadClass(ClassLoader.java:423)
+</span><span class='line'>        at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+</span><span class='line'>        at java.lang.ClassLoader.loadClass(ClassLoader.java:356)
+</span><span class='line'>        at org.codehaus.groovy.runtime.callsite.CallSiteGenerator.isCompilable(CallSiteGenerator.java:251)
+</span><span class='line'>        at org.codehaus.groovy.reflection.CachedMethod.createStaticMetaMethodSite(CachedMethod.java:284)
+</span><span class='line'>        at org.codehaus.groovy.runtime.callsite.StaticMetaMethodSite.createStaticMetaMethodSite(StaticMetaMethodSite.java:111)
+</span><span class='line'>        at groovy.lang.MetaClassImpl.createStaticSite(MetaClassImpl.java:3000)
+</span><span class='line'>        at org.codehaus.groovy.runtime.callsite.CallSiteArray.createCallStaticSite(CallSiteArray.java:59)
+</span><span class='line'>        at org.codehaus.groovy.runtime.callsite.CallSiteArray.createCallSite(CallSiteArray.java:144)
+</span><span class='line'>        at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:40)
+</span><span class='line'>        at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:116)
+</span><span class='line'>        at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:124)
+</span><span class='line'>        at com.admaster.storm.Config.&lt;clinit&gt;(Config.groovy:13)
+</span><span class='line'>        at java.lang.Class.forName0(Native Method)
+</span><span class='line'>        at java.lang.Class.forName(Class.java:188)
+</span><span class='line'>        at com.admaster.storm.ReceiverTopology.class$(ReceiverTopology.groovy)
+</span><span class='line'>        at com.admaster.storm.ReceiverTopology.$get$$class$com$admaster$storm$Config(ReceiverTopology.groovy)
+</span><span class='line'>        at com.admaster.storm.ReceiverTopology.main(ReceiverTopology.groovy:20)</span></code></pre></td></tr></table></div></figure>
 
-<p>  随便拨弄点碎语写愁或许若题所提：</p>
 
-<p>  碎花糅尽人憔悴，何必融月饮前尘。</p>
-
-<p>  吾欲拂漪蕴琴觞，轻随风和携淡云。</p>
-
-<p>   加油。</p>
+<pre><code>删掉/opt/storm/lib/asm.jar解决
+</code></pre>
 
 		
 		
@@ -557,37 +721,28 @@
   
 
 
-<time datetime="2013-11-03T18:14:00+08:00" data-updated="true" itemprop="datePublished">Nov 3<span>rd</span>, 2013</time></div>
+<time datetime="2013-11-12T18:38:00+08:00" data-updated="true" itemprop="datePublished">Nov 12<span>th</span>, 2013</time></div>
 		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ji-zhu/'>技术</a>
+
 
 </div>
 		
 	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/11/03/ru-guo-mei-you-hun-yin/" itemprop="url">如果没有婚姻</a></h1>
+	<h1 class="title" itemprop="name"><a href="/blog/2013/11/12/nohupming-ling-rang-jin-cheng-zai-hou-tai-ke-kao-yun-xing/" itemprop="url">Nohup命令让进程在后台可靠运行</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		<p>   关于婚姻，欲望都市中凯莉曾经说，婚姻就像穆斯林妇女的长袍，你不能打破传统，但是可以用自己的方式去装饰她。先锋如这位美丽与性感智慧并存的女神，谈起婚姻依旧些许无奈。即使优秀杰出如希拉里，忍着全世界都知道她男人偷腥的尴尬，依旧坚持着与克林顿的伉俪之合。婚姻的存在，似乎是在这个男权社会里保护女性的安全伞，却也不断地给女人带来事业的牺牲，小三的可能，婆媳不合，家庭暴力等各种问题不断侵蚀磨损着美好和幸福的皮肤，在本该甜蜜的甜点中加入阵阵苦涩。</p>
+		<p>nohup 的用途就是让提交的命令忽略 hangup 信号,用法:</p>
 
-<p>  外婆总是和妈妈说，女人命若雪花，飘在哪里，嫁给谁，就是怎样的命。这样的话，老妈和我说，我会和我的女儿说，我女儿再和她的女儿说。婚姻无论对于女人还是男人来说，都是一道赌注。男人因为婚姻，再遇到喜欢的人，情不自禁发生了任何什么都可能把半生奋斗搭上。女人因为婚姻，其中辛苦，更不用赘提。</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>nohup COMMAND [ARG]  &
+</span><span class='line'>nohup COMMAND  &gt;filename 2&gt;&1</span></code></pre></td></tr></table></div></figure>
 
-<p>  如果世界上就没有婚姻这种东西存在呢？</p>
 
-<p>  相爱的人想在一起依旧会在一起，不喜欢的人离开彼此也没有了很多现实和道德的谴责。一张证不会让两个人更加相爱。</p>
-
-<p>  如果没有婚姻，就不会有小三，也就不会有离婚，更不会出现因为外界原因而勉强生活在一起的情况。</p>
-
-<p>  如果没有婚姻，就没有很多物质要求，因为没有人可以占到谁太多便宜，便也不会硬性要求房子车子，拜金的人也还得独立挣钱，因为没有其他途径来获得不属于自己的财产。</p>
-
-<p>  如果没有婚姻，很多互相喜欢的人不会因为婚姻的硬性外在标准而分开，很多不互相喜欢的人也不会因为外在条件合适而在一起。</p>
-
-<p>  如果没有婚姻，女人失去了通过婚姻得到生活水平提高的机会，也获得可以通过工作来获得自己想要生活的动力，克服了人性的惰性，是否可以更加提升自己，增加自信。</p>
-
-<p>  如果没有婚姻，便也没有离婚，对小孩子的成长没有硬性规定一定要父亲和母亲的形象，反而没有了很多单亲家庭可能对孩子造成的伤害，当世界都这样时，就没有不同和孤立。</p>
-
-<p>  如果没有婚姻，世界会怎么样呢？</p>
-
-<p>  婚姻制度又是如何产生，为何存在的呢？她的重要性到底多大呢？</p>
-
-<p>  在这个对自己不干正事只知道思考人生的惬意午后，我又陷入了深深的思考。很有意思的假设，不是吗？</p>
+<pre><code>&gt;filename 2&gt;&amp;1 用来更改缺省的重定向文件名
+</code></pre>
 
 		
 		
@@ -610,65 +765,19 @@
   
 
 
-<time datetime="2013-11-03T18:13:00+08:00" data-updated="true" itemprop="datePublished">Nov 3<span>rd</span>, 2013</time></div>
+<time datetime="2013-11-12T18:37:00+08:00" data-updated="true" itemprop="datePublished">Nov 12<span>th</span>, 2013</time></div>
 		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/sheng-huo/'>生活</a>
+
 
 </div>
 		
 	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/11/03/ri-zi/" itemprop="url">日子</a></h1>
+	<h1 class="title" itemprop="name"><a href="/blog/2013/11/12/pu-dong-tu-shu-guan/" itemprop="url">浦东图书馆</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		<p>很多挚友总是有些人生大记时发一篇日志。</p>
-
-<p>而我，总是依赖于文字絮絮叨叨，情感太多愁总逃不过矫情。</p>
-
-<p>然而曾年少，曾单纯，反而易感怀，易吐述。</p>
-
-<p>如今遇到越来越多的好事坏事，打击或赞赏，情绪越积郁，却逾无法落笔。</p>
-
-<p>长大，有时是一件被动却无奈的事情。</p>
-
-<p>她逼着你从梦想和单纯中走出来，直面这个社会的真实，跟着无数的梦想一起。</p>
-
-<p>塞进大熔炉，变成一个个类似的，现实靠谱的人生。</p>
-
-<p>越长大越发现，所有的年少轻狂，所有的凌云壮志。</p>
-
-<p>在悲伤与失败感袭来时，都蔓延成丝丝扰扰的讽刺。</p>
-
-<p>二十几岁的年纪，放佛看得到四十岁六十岁的结果。</p>
-
-<p>放佛能轻历多年后的沧桑和感慨，放佛能体会知天命时的成熟和淡漠。</p>
-
-<p>想起将爱电影版的三种情形。</p>
-
-<p>第一种 都成为社会成功人士，互相从冷漠到再次相爱。</p>
-
-<p>如此上流的社会，属于默默地梦想，单纯的想象。</p>
-
-<p>第二种 在波尔多的无奈与留恋</p>
-
-<p>好似很多人都有一段无奈遥远的少年苦恋，终会放下。</p>
-
-<p>第三种 也都拮据的生活，平凡的甚至有点拿不出手的人生。</p>
-
-<p>也许就是我们都将会经历的人生。</p>
-
-<p>我们把大部分的桀骜不驯，骄傲与执著</p>
-
-<p>都装进最暗处的角落里。</p>
-
-<p>然后把心塞进平庸而低调的人生。</p>
-
-<p>为了物质，为了孩子，为了父母</p>
-
-<p>为了这坚硬的现实。</p>
-
-<p>慢慢低下头，慢慢往前爬。</p>
-
-<p>终于  成功的丢了自己。</p>
-
-<p>也许，也终于懂得了生活。</p>
+		<p>浦东图书馆是个好地方，夏日好，看看书，缓缓归。</p>
 
 		
 		
@@ -691,47 +800,85 @@
   
 
 
-<time datetime="2013-11-03T18:13:00+08:00" data-updated="true" itemprop="datePublished">Nov 3<span>rd</span>, 2013</time></div>
+<time datetime="2013-11-12T18:37:00+08:00" data-updated="true" itemprop="datePublished">Nov 12<span>th</span>, 2013</time></div>
 		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ji-zhu/'>技术</a>
+
 
 </div>
 		
 	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/11/03/nu-ren-de-xing-fu/" itemprop="url">女人的幸福</a></h1>
+	<h1 class="title" itemprop="name"><a href="/blog/2013/11/12/cronbiao-da-shi/" itemprop="url">Cron表达式</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		<p>早上惺忪中，就一本爱书品咂，突然柔软地惬意。浮世爱情，女人的幸福，真的依赖于感情吗？</p>
+		<p>cronExpression配置说明:</p>
 
-<p>我是一个不务正业的人吧，正在找工作的时刻，手中什么都没有，突然就倦了，什么也不想找了。每天就着一些闲书，品些甜品，痴痴地想一些问题，安静地待一下午，就觉得已经幸福到满。不去想未来，也不想曾经，就这样感受当下的宁静，似乎时间也为我不忍心往前裸奔。</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>字段 允许值 允许的特殊字符
+</span><span class='line'>秒 0-59 , - * /
+</span><span class='line'>分 0-59 , - * /
+</span><span class='line'>小时 0-23 , - * /
+</span><span class='line'>日期 1-31 , - * ? / L W C
+</span><span class='line'>月份 1-12 或者 JAN-DEC , - * /
+</span><span class='line'>星期 1-7 或者 SUN-SAT , - * ? / L C #
+</span><span class='line'>年（可选） 留空, 1970-2099 , - * /
+</span><span class='line'>表达式 意义
+</span><span class='line'>"0 0 12 * * ?" 每天中午12点触发
+</span><span class='line'>"0 15 10 ? * *" 每天上午10:15触发
+</span><span class='line'>"0 15 10 * * ?" 每天上午10:15触发
+</span><span class='line'>"0 15 10 * * ? *" 每天上午10:15触发
+</span><span class='line'>"0 15 10 * * ? 2005" 2005年的每天上午10:15触发
+</span><span class='line'>"0 * 14 * * ?" 在每天下午2点到下午2:59期间的每1分钟触发
+</span><span class='line'>"0 0/5 14 * * ?" 在每天下午2点到下午2:55期间的每5分钟触发
+</span><span class='line'>"0 0/5 14,18 * * ?" 在每天下午2点到2:55期间和下午6点到6:55期间的每5分钟触发
+</span><span class='line'>"0 0-5 14 * * ?" 在每天下午2点到下午2:05期间的每1分钟触发
+</span><span class='line'>"0 10,44 14 ? 3 WED" 每年三月的星期三的下午2:10和2:44触发
+</span><span class='line'>"0 15 10 ? * MON-FRI" 周一至周五的上午10:15触发
+</span><span class='line'>"0 15 10 15 * ?" 每月15日上午10:15触发
+</span><span class='line'>"0 15 10 L * ?" 每月最后一日的上午10:15触发
+</span><span class='line'>"0 15 10 ? * 6L" 每月的最后一个星期五上午10:15触发
+</span><span class='line'>"0 15 10 ? * 6L 2002-2005" 2002年至2005年的每月的最后一个星期五上午10:15触发
+</span><span class='line'>"0 15 10 ? * 6#3" 每月的第三个星期五上午10:15触发
+</span><span class='line'>特殊字符 意义
+</span><span class='line'>* 表示所有值；
+</span><span class='line'>? 表示未说明的值，即不关心它为何值；
+</span><span class='line'>- 表示一个指定的范围；
+</span><span class='line'>, 表示附加一个可能值；
+</span><span class='line'>/ 符号前表示开始时间，符号后表示每次递增的值；</span></code></pre></td></tr></table></div></figure>
 
-<p>我总是在想，也总是在问很多长者好友，女人的幸福，是什么呢？</p>
 
-<p>答案似乎没有，每个人的答案都来自于自己的主观。</p>
 
-<p>然而似乎又有。</p>
-
-<p>女人的幸福，取决于她的态度，与拥有无关。</p>
-
-<p>女人的幸福与爱情相关。</p>
-
-<p>无论一个女人混的多么潦倒，即使是一个乞丐，她的身边有一个深情脉脉，体贴入微的男乞丐搂着她生怕有人欺负她奉她为女神，那么即使戴安娜王妃，也是羡慕的吧。爱情，是让女人最美的保养品。</p>
-
-<p>然而爱情，是人世间最捉摸不定的。倘若没有了外界的现实依附，它可能突然就来了，突然又走了，你可能知道它为何而来，却永远不明白它为何而走。能够在爱情悄然消散之后，一份淡然，不去追究，何尝不是一个女人的智慧与姿态。</p>
-
-<p>而有多少憔悴与痴情，不是在失去上，而是在失去之后的不甘心。拿佟佟的话说，得到爱情，是女人的脱胎换骨，失去爱情，把握得宜，何尝不是女人的另一次脱胎换骨。</p>
-
-<p>爱倘若不在，责备也便不存在。何处谈有人对错。受伤更多的人或许更有理去哭诉，外界或许更多偏袒。可是外界再多训斥，再多讲理，爱情它不讲理，让人奈何几分。</p>
-
-<p>由此，爱情是非常好的保养品，却不是必需品。失去爱情的女人，何必给自己不幸福的借口。没有了迪奥，还可以用大宝。</p>
-
-<p>女人的幸福与价值相关。</p>
-
-<p>一个事业成功为人风情万种妩媚丛生并且成熟智慧优雅的却独身的女人，和一个工作一般为人朴素平淡无奇并且泼辣肤浅尘俗的却结婚的女人。后者依然可以有高姿态去鄙夷前者。</p>
-
-<p>可是当我与一位长者聊天时，她对爱情失去的淡然，对事业的认真，对自身修养的要求，让我如此的欣赏和崇拜。独身辛苦，心中生闷。与其共饮，泪眼婆娑的问她，倘若我孤单一辈子，是不是便终生凄惨不得快乐。</p>
-
-<p>她怜惜地摸着我的头，缓缓地说，女人的幸福，取决于对生活的态度，与现实无关。何况，还有很多自己喜欢的爱好呢？尽管微醉，听着听着，心便安静了下来。</p>
-
-<p>遇到爱情的时候，勇敢地去快乐，爱情失去时，淡然的走开。何尝不是幸福。</p>
 
 		
 		

@@ -1,0 +1,175 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>mongodb的配置参数 - 海贼的少年</title>
+	<meta name="author" content="海贼的少年">
+
+	
+	<meta name="description" content="Mongodb的配置参数 1
+--dbpath 指定数据目录；默认是/data/db/。每个mongod进程都需要独立的数据目录，所以要是有3个mongod实例，必须要有3个独立的数据目录。当mongod启动时，会在数据目录中创建mongod.lock文件， &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="海贼的少年" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://xiaojian.me/blog/2013/11/12/mongodbde-pei-zhi-can-shu/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		document.write("<img src='http://www.gravatar.com/avatar/" + MD5("niubijian2007@126.com") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+	</script>
+</div>
+<h1><a href="/">海贼的少年</a></h1>
+<p class="subtitle">奋斗中的一枚程序员：）</p>
+<nav id="main-nav"><ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		<a class="weibo" href="http://www.weibo.com/niubijian" title="Weibo">Weibo</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav></header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">Mongodb的配置参数</h1>
+	<div class="entry-content" itemprop="articleBody"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>--dbpath</span></code></pre></td></tr></table></div></figure>
+
+
+<p>指定数据目录；默认是/data/db/。每个mongod进程都需要独立的数据目录，所以要是有3个mongod实例，必须要有3个独立的数据目录。当mongod启动时，会在数据目录中创建mongod.lock文件，这个文件用于防止其他mongd进程使用该数据目录。如果使用同一个数据目录启动另一个MongoDB服务器，则会报错：</p>
+
+<h4>&ldquo;Unable to acquire lock for lockfilepath: data/db/mongod.lock.&rdquo;</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>--port</span></code></pre></td></tr></table></div></figure>
+
+
+<p>指定服务器监听的端口号。默认是27017，是个其他进程不怎么用的端口。要是运行多个mongod进程，则要给每个指定不同的端口号。如果启动mongod时端口被占用，则报错：</p>
+
+<h4>&ldquo;Address already in use for socket: 0.0.0.0:27017&rdquo;</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>--logpath</span></code></pre></td></tr></table></div></figure>
+
+
+<p>指定日志输出路径，系统会在文件不存在时创建它，它会将已有文件覆盖掉，清楚所有原来的日志记录。如果想保留原来的日志，还需要使用&mdash;logappend选项。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>--config</span></code></pre></td></tr></table></div></figure>
+
+
+<p>指定配置文件，家在命令行未指定的各种选项。</p>
+
+<p>停止MongoDB</p>
+
+<p> 命令：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>kill -2 pid (SIGINT)
+</span><span class='line'>kill pid (SIGTERM)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>千万不要SIGKILL (kill -9)，这样会导致数据库直接关闭，数据文件损毁，要是真的发生了不幸，一定要在启动备份之前修复数据库。</p>
+</div>
+
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style addthis_16x16_style">
+	
+	<a class="addthis_button_sinaweibo"></a>
+	
+	
+	
+	
+	
+	<a class="addthis_button_compact"></a>
+	<a class="addthis_counter addthis_bubble_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid="></script>
+</div>
+
+
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2013 - 海贼的少年 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-42893468-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

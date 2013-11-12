@@ -1,0 +1,207 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>HBase的OOM问题 - 海贼的少年</title>
+	<meta name="author" content="海贼的少年">
+
+	
+	<meta name="description" content="HBase的OOM问题 HBase OOM 问题： 出错堆栈： 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+Exception in thread "main" java.lang.OutOfMemoryError: unable to create &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="海贼的少年" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://xiaojian.me/blog/2013/11/12/hbasede-oomwen-ti/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		document.write("<img src='http://www.gravatar.com/avatar/" + MD5("niubijian2007@126.com") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+	</script>
+</div>
+<h1><a href="/">海贼的少年</a></h1>
+<p class="subtitle">奋斗中的一枚程序员：）</p>
+<nav id="main-nav"><ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		<a class="weibo" href="http://www.weibo.com/niubijian" title="Weibo">Weibo</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav></header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">HBase的OOM问题</h1>
+	<div class="entry-content" itemprop="articleBody"><p>HBase OOM 问题：</p>
+
+<p>出错堆栈：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Exception in thread "main" java.lang.OutOfMemoryError: unable to create new native thread
+</span><span class='line'>at java.lang.Thread.start0(Native Method)
+</span><span class='line'>at java.lang.Thread.start(Thread.java:693)
+</span><span class='line'>at java.util.concurrent.ThreadPoolExecutor.addWorker(ThreadPoolExecutor.java:949)
+</span><span class='line'>at java.util.concurrent.ThreadPoolExecutor.execute(ThreadPoolExecutor.java:1360)
+</span><span class='line'>at java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:132)
+</span><span class='line'>at org.apache.hadoop.hbase.client.HConnectionManager$HConnectionImplementation.processBatchCallback(HConnectionManager.java:1550)
+</span><span class='line'>at org.apache.hadoop.hbase.client.HConnectionManager$HConnectionImplementation.processBatch(HConnectionManager.java:1413)
+</span><span class='line'>at org.apache.hadoop.hbase.client.HTable.flushCommits(HTable.java:949)
+</span><span class='line'>at org.apache.hadoop.hbase.client.HTable.doPut(HTable.java:826)
+</span><span class='line'>at org.apache.hadoop.hbase.client.HTable.put(HTable.java:801)
+</span><span class='line'>at org.apache.hadoop.hbase.client.HTablePool$PooledHTable.put(HTablePool.java:394)
+</span><span class='line'>at co.admaster.dmp.superid.utils.HBaseOp.insertData(HBaseOp.java:78)
+</span><span class='line'>at co.admaster.dmp.superid.service.impl.SuperIdServiceImpl._insertTypeId(SuperIdServiceImpl.java:141)
+</span><span class='line'>at co.admaster.dmp.superid.service.impl.SuperIdServiceImpl.addTwoTypeIds(SuperIdServiceImpl.java:68)
+</span><span class='line'>at co.admaster.dmp.superid.test.SuperIdServiceImplTest.addTwoTypeIdsTest(SuperIdServiceImplTest.java:33)
+</span><span class='line'>at co.admaster.dmp.superid.test.SuperIdServiceImplTest.main(SuperIdServiceImplTest.java:94)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>以下是用hbase shell测试，但最后报错，不知什么原因</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>hbase(main):004:0&gt; for i in 1..800 do
+</span><span class='line'>hbase(main):005:1* put 'chenxj_test',"row#{i}",'family:column',"aaaaaaaaaaaaaaaaaaaaaa#{i}"
+</span><span class='line'>hbase(main):006:1&gt; end</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ERROR: java.lang.OutOfMemoryError: unable to create new native thread</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>修改ulimit设置的最大进程数解决</h4>
+</div>
+
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style addthis_16x16_style">
+	
+	<a class="addthis_button_sinaweibo"></a>
+	
+	
+	
+	
+	
+	<a class="addthis_button_compact"></a>
+	<a class="addthis_counter addthis_bubble_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid="></script>
+</div>
+
+
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2013 - 海贼的少年 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-42893468-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

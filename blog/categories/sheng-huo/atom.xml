@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 生活 | 海贼的少年]]></title>
+  <link href="http://xiaojian.me/blog/categories/sheng-huo/atom.xml" rel="self"/>
+  <link href="http://xiaojian.me/"/>
+  <updated>2013-11-12T19:00:53+08:00</updated>
+  <id>http://xiaojian.me/</id>
+  <author>
+    <name><![CDATA[海贼的少年]]></name>
+    <email><![CDATA[niubijian2007@126.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[浦东图书馆]]></title>
+    <link href="http://xiaojian.me/blog/2013/11/12/pu-dong-tu-shu-guan/"/>
+    <updated>2013-11-12T18:37:00+08:00</updated>
+    <id>http://xiaojian.me/blog/2013/11/12/pu-dong-tu-shu-guan</id>
+    <content type="html"><![CDATA[<p>浦东图书馆是个好地方，夏日好，看看书，缓缓归。</p>
+]]></content>
+  </entry>
+  
+</feed>
