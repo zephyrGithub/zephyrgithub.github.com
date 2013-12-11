@@ -4,7 +4,7 @@
   <title><![CDATA[海贼的少年]]></title>
   <link href="http://xiaojian.me/atom.xml" rel="self"/>
   <link href="http://xiaojian.me/"/>
-  <updated>2013-11-22T23:39:34+08:00</updated>
+  <updated>2013-12-11T23:23:03+08:00</updated>
   <id>http://xiaojian.me/</id>
   <author>
     <name><![CDATA[海贼的少年]]></name>
@@ -12,34 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[for陈小欢同学]]></title>
-    <link href="http://xiaojian.me/blog/2013/11/22/forchen-xiao-huan-tong-xue/"/>
-    <updated>2013-11-22T22:06:00+08:00</updated>
-    <id>http://xiaojian.me/blog/2013/11/22/forchen-xiao-huan-tong-xue</id>
-    <content type="html"><![CDATA[<p>欢欢同学：</p>
-
-<p>两日前不经意间看到你的帖子，便被你温暖的笑容吸引，后面接触了一下，真的是一个非常不错的姑娘，提笔写下这封信，如若言语不当，还望海涵。</p>
-
-<p>我生于88年10月，来自江苏盐都，家庭温馨，父母开明。
-07年求学于北方某211大学读本科，计算机专业，毕业后在北京一家互联网公司做着喜欢的程序员工作，在北京工作生活了两年，虽然孤独，却也很有收获。</p>
-
-<p>想念家乡的好山好水，还有一帮子小伙伴，还是决定离开北京，告别同事，来到上海。也是在一家互联网工作做技术工作，打算在这里有个家，不再漂泊流浪~</p>
-
-<p>我性格随和开朗，没有抽烟网游的不良嗜好，偶尔少喝点酒，业余时间喜欢读书、写字，找朋友去附近的城市溜达，乐在一起。</p>
-
-<p>我心中的爱情是择一城终老，遇一人白首的简单幸福，是困难时互相鼓励关心前进的温馨，也是互相善待彼此家人的责任与体贴。</p>
-
-<p>附上一些近照：</p>
-
-<p><img src="http://s3.t.itc.cn/mblog/pic/201311_22_23/a838i07114709537488.jpg" alt="大四毕业" /></p>
-
-<p><img src="http://s3.t.itc.cn/mblog/pic/201311_22_22/b6ati22472993076739.jpg" alt="浙江某小岛" /></p>
-
-<p><img src="http://s2.t.itc.cn/mblog/pic/201311_22_23/a032106988554192488.jpg" alt="愣头愣脑证件照" /></p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[linux下修改ulimit设置的最大进程数]]></title>
@@ -894,6 +866,27 @@ exit 0</p>
 
 
 <p>在twitter4J基础上改了改，暂时没有实现返回集合接口的分页</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[开放平台的微博经常出现重复的问题]]></title>
+    <link href="http://xiaojian.me/blog/2013/11/12/kai-fang-ping-tai-de-wei-bo-jing-chang-chu-xian-zhong-fu-de-wen-ti/"/>
+    <updated>2013-11-12T18:30:00+08:00</updated>
+    <id>http://xiaojian.me/blog/2013/11/12/kai-fang-ping-tai-de-wei-bo-jing-chang-chu-xian-zhong-fu-de-wen-ti</id>
+    <content type="html"><![CDATA[<p>今天发现不少用户从open api过来的微博有重复，终于找到了原因，猜测了一下导致微博重复的流程：</p>
+
+<p>1、用户发一条微博</p>
+
+<p>2、服务器处理这条微博，代码处理了发微博的逻辑之后抛了异常，后面代码未执行完，返回501</p>
+
+<p>3、用户（应该是某个程序或者微博工具）发现服务器端返回非200，又发了一遍上条微博</p>
+
+<p>造成重复微博的出现</p>
+
+<p>类似错误半天多就产生了 2 573条</p>
+
+<p>悲剧的是log打出来的e.getMessage() 为null，上面try块比较大，而且所调用的方法有许多是申明了抛异常的&hellip;</p>
 ]]></content>
   </entry>
   
