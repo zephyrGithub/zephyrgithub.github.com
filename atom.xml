@@ -4,7 +4,7 @@
   <title><![CDATA[海贼的少年]]></title>
   <link href="http://xiaojian.me/atom.xml" rel="self"/>
   <link href="http://xiaojian.me/"/>
-  <updated>2013-12-11T23:23:03+08:00</updated>
+  <updated>2014-01-14T18:43:08+08:00</updated>
   <id>http://xiaojian.me/</id>
   <author>
     <name><![CDATA[海贼的少年]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[欢迎小鸡同学]]></title>
+    <link href="http://xiaojian.me/blog/2014/01/14/huan-ying-xiao-ji-tong-xue/"/>
+    <updated>2014-01-14T18:36:00+08:00</updated>
+    <id>http://xiaojian.me/blog/2014/01/14/huan-ying-xiao-ji-tong-xue</id>
+    <content type="html"><![CDATA[<p><img src="http://s3.t.itc.cn/mblog/pic/20141_14_18/f_a4du3k49120527008829.jpg" ></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[linux下修改ulimit设置的最大进程数]]></title>
@@ -866,27 +875,6 @@ exit 0</p>
 
 
 <p>在twitter4J基础上改了改，暂时没有实现返回集合接口的分页</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[开放平台的微博经常出现重复的问题]]></title>
-    <link href="http://xiaojian.me/blog/2013/11/12/kai-fang-ping-tai-de-wei-bo-jing-chang-chu-xian-zhong-fu-de-wen-ti/"/>
-    <updated>2013-11-12T18:30:00+08:00</updated>
-    <id>http://xiaojian.me/blog/2013/11/12/kai-fang-ping-tai-de-wei-bo-jing-chang-chu-xian-zhong-fu-de-wen-ti</id>
-    <content type="html"><![CDATA[<p>今天发现不少用户从open api过来的微博有重复，终于找到了原因，猜测了一下导致微博重复的流程：</p>
-
-<p>1、用户发一条微博</p>
-
-<p>2、服务器处理这条微博，代码处理了发微博的逻辑之后抛了异常，后面代码未执行完，返回501</p>
-
-<p>3、用户（应该是某个程序或者微博工具）发现服务器端返回非200，又发了一遍上条微博</p>
-
-<p>造成重复微博的出现</p>
-
-<p>类似错误半天多就产生了 2 573条</p>
-
-<p>悲剧的是log打出来的e.getMessage() 为null，上面try块比较大，而且所调用的方法有许多是申明了抛异常的&hellip;</p>
 ]]></content>
   </entry>
   
